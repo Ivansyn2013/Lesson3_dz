@@ -1,10 +1,11 @@
 # первое задание 3 урока
 # создание функции переводчика
-dict_of_words = {'один': 'one', 'два':'two', 'три': 'three', 'четыре': 'four', 'пять': 'five',
-                 'шесть': 'six', 'семь':'seven',
-                 'восемь':'eight', 'девять':'nine', 'десять':'ten'}
+dict_of_words = {'один': 'one', 'два': 'two', 'три': 'three', 'четыре': 'four', 'пять': 'five',
+                 'шесть': 'six', 'семь': 'seven',
+                 'восемь': 'eight', 'девять': 'nine', 'десять': 'ten'}
 
-def num_translate (get_word):
+
+def num_translate(get_word):
     my_list = []
     my_list = list(get_word)
     get_word = str(get_word.lower())
