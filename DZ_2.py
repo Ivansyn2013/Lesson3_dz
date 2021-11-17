@@ -15,34 +15,44 @@ def first_sign (my_element):
 
 
 
-def theaurus_adv (my_name, my_surname):
+def theaurus_adv (my_name_str):
     #подготовка данных
     my_name_dict = {}
     my_name_dict.clear
-    my_name = str(my_name)
-    my_surname = str(my_surname)
     fs_list = []
-    name_surname_list = []
+    surname_list = []
     name_list = []
-    name_surname_list.append()
-    #создание списка первых букв
-    fs_list.append(first_sign(my_name))
-    # создание списока имен
-    name_list.append(my_name)
-    #сортировка и фильтрация
-    for i in range(len(fs_list)):
+    all_list = []
+    filter_names = []
+    all_list = my_name_str.split(' ')
+    i = 0
+    #получаем имена и фамилии
+    while i < len(all_list):
+        if i % 2 == 0:
+            name_list.append(all_list[i]);
+        else:
+            surname_list.append(all_list[i]);
+        i +=1
+    #создание списка первых букв имен
+    fs_list = list(map (first_sign, name_list))
 
-        # работа в словаре
-        my_name_dict = {first_sign(my_name): my_surname}
+    print(fs_list)
+    #сортировка и фильтрация
+    for i in range(len(name_list)):
+        if fs_list[i] == first_sign(name_list[i]):
+            filter_names.append(name_list[i])
+    for i in range(len(filter_names)):
+        my_name_dict = dict.fromkeys([fs_list[i]], [filter_names[i]])
+
+    print(filter_names)
     print(my_name_dict)
     return None
 
-input_names = []
-input_names.append(input('Введите имя и фамилию:').split(' '))
+
+input_names = str(input('Введите имя и фамилию:'))
 
 
 
 #print(input_names)
 
-for i in range(0, len(input_names[0])-1, 2):
-    print(theaurus_adv(input_names[0][i],input_names[0][i+1]))
+theaurus_adv(input_names)
