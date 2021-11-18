@@ -23,6 +23,7 @@ def theaurus_adv (my_name_str):
     surname_list = []
     name_list = []
     all_list = []
+
     filter_names = []
     all_list = my_name_str.split(' ')
     i = 0
@@ -35,16 +36,22 @@ def theaurus_adv (my_name_str):
         i +=1
     #создание списка первых букв имен
     fs_list = list(map (first_sign, name_list))
+    name_str = ' '.join(all_list)
 
     print(fs_list)
     #сортировка и фильтрация
     for i in range(len(name_list)):
-        if fs_list[i] == first_sign(name_list[i]):
-            filter_names.append(name_list[i])
-    for i in range(len(filter_names)):
-        my_name_dict = dict.fromkeys([fs_list[i]], [filter_names[i]])
+        temp_name_list = []
+        for ii in range(len(name_list)):
+            if fs_list[i] == first_sign(name_list[ii]):
+                temp_name_list.append(name_list[ii])
+        filter_names.append(temp_name_list[:])
+
+    my_name_dict = dict(zip(fs_list, filter_names))
 
     print(filter_names)
+    print(my_name_dict)
+
     print(my_name_dict)
     return None
 
